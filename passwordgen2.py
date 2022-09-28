@@ -1,16 +1,16 @@
-from argparse import ArgumentParser
 import secrets
 import random
 import string
 
-passwordgen = input(str("Hello, welcome to the random password generator!\nDo you need a password generated?" + " "))
-if passwordgen == str("yes"):
-    supply = input("How many passwords would you like to generate?" + " ")
-    length = input("How long would you like your password to be?" + " ")
-    upper = input("Would you like to include uppercase letters?" + " ")
-    lower = input("Would you like to include lowercase letters?" + " ")
-    numbers = input("Would you like to include numbers?" + " ")
-    special = input ("Would you like to include special characters?" + " ")
+passwordgen = input(str("Hello, welcome to the random password generator!\nDo you need a password generated?" + "(n/Y):" + " "))
+if passwordgen == str("Y"):
+    supply = input("How many passwords would you like to generate?" + "(#):" + " ")
+    length = input("How long would you like your password to be?" + "(#):" + " ")
+    upper = input("Would you like to include uppercase letters?" + "(n/Y):" + " ")
+    lower = input("Would you like to include lowercase letters?" + "(n/Y):" + " ")
+    numbers = input("Would you like to include numbers?" + "(n/y):" + " ")
+    special = input ("Would you like to include special characters?" + "(n/y):" + " ")
+    output = input("Where would you like to store the passwords?" + "(.txt):" + " ")
 
     passwords = []
 
@@ -39,8 +39,11 @@ if passwordgen == str("yes"):
             password = ''.join(password)
 
             passwords.append(password)
+    if output:
+        with open (output, 'w') as f:
+            f.write('\n'.join(passwords))
 
-    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nHere are your passwords as requested.\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")       
+    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nHere are your passwords as requested.\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     print(''.join(password))
 
 else:
